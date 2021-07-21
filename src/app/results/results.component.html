@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-12 offset-md-12">
+        <div class="questions-form bg-light mt-4 p-4">
+            <h4 class="text-center green">Exam Title: <span class="text-muted">{{examTitle}}</span></h4>
+            <h4 class="text-center green">Total Grade: <span class="text-muted">{{examTotalGrade}}</span></h4>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let result of finalResults; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td>{{result.fullname}}</td>
+                                <td>{{result.mobile}}</td>
+                                <td>{{result.email}}</td>
+                                <td>{{result.grade}}</td>
+                                <td *ngIf="checkExamStatus(result.grade, examTotalGrade)" class="text-success fw-bold">
+                                    PASS</td>
+                                <td *ngIf="!checkExamStatus(result.grade, examTotalGrade)" class="text-danger fw-bold">
+                                    FAIL</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

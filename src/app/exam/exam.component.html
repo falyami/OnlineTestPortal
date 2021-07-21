@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12 offset-md-12">
+        <div *ngIf="successFlag === true" class="alert alert-success text-center" role="alert">
+            <h4>Congraulations! Your Exam has been Submitted Successfully ..</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 offset-md-12">
+        <div class="questions-form bg-light mt-4 p-4">
+            <h3 class="text-center green fw-bold">{{examTitle}}</h3>
+            <hr>
+            <h4 class="fw-bold">List of Questions</h4>
+            <hr>
+            <div class="m-3">
+                <img width="20" alt="Warning Icon" src="assets/images/warning-icon.png" />
+                <label class="text-danger ms-2"> All Questions are Required to Submit</label>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group row p-1" *ngFor="let question of questions; let i = index">
+                    <h5 class="col-md-10"><strong>{{ question.id }}.</strong> {{ question.body }}</h5>
+                    <div class="col-md-2">
+                        <select formControlName={{question.id}} name={{question.id}} id={{question.id}}
+                            class="form-control">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group col-12 text-center">
+                    <button type="submit" class="btn btn-lg btn-success" [disabled]="!form.valid || successFlag"><i
+                            class="fa fa-share me-2"></i>Submit
+                        Answers</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

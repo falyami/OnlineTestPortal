@@ -1,0 +1,9 @@
+<div class="text-center mt-5">
+    <h2><strong>Welcome to Online Test Portal for Recruitment</strong></h2>
+    <br>
+    <div *ngIf="!authService.isLoggedIn">
+        <h3>To Start Click on</h3>
+        <button type="button" class="btn btn-labeled btn-success ms-2 mt-2" (click)="btnLogin();"><span class="btn-label"><i
+                    class="fa fa-lock me-2"></i></span>Login</button>
+    </div>
+</div>

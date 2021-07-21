@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'OnlineTestPortal';
+  constructor(public authService: AuthService) { }
+
+  // Method to Logout
+  logOut(): void {
+    // Call logOut() Method to Logout System
+    this.authService.logOut();
+  };
 }
